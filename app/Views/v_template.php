@@ -77,7 +77,37 @@
                         <li class="nav-item">
                             <a href="widgets.html">
                                 <i class="fas fa-desktop"></i>
-                                <p>Widgets</p>
+                                <p>Tahun Ajaran</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="widgets.html">
+                                <i class="fas fa-desktop"></i>
+                                <p>Kelas</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="widgets.html">
+                                <i class="fas fa-desktop"></i>
+                                <p>Siswa</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="widgets.html">
+                                <i class="fas fa-desktop"></i>
+                                <p>Pengguna</p>
+                            </a>
+                        </li>
+                        <li class="nav-section">
+                            <span class="sidebar-mini-icon">
+                                <i class="fa fa-ellipsis-h"></i>
+                            </span>
+                            <h4 class="text-section">Transaksi</h4>
+                        </li>
+                        <li class="nav-item">
+                            <a href="widgets.html">
+                                <i class="fas fa-desktop"></i>
+                                <p>Pembayaran</p>
                             </a>
                         </li>
                     </ul>
@@ -122,7 +152,7 @@
                                         <img src="<?= base_url('admin') ?>/assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
                                     </div>
                                     <span class="profile-username">
-                                        <span class="op-7">Hi,</span> <span class="fw-bold">Hizrian</span>
+                                        <span class="op-7">Hi,</span> <span class="fw-bold"><?= session()->get('nama_user') ?></span>
                                     </span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-user animated fadeIn">
@@ -131,20 +161,18 @@
                                             <div class="user-box">
                                                 <div class="avatar-lg"><img src="<?= base_url('admin') ?>/assets/img/profile.jpg" alt="image profile" class="avatar-img rounded"></div>
                                                 <div class="u-text">
-                                                    <h4>Hizrian</h4>
-                                                    <p class="text-muted">hello@example.com</p><a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+                                                    <h4><?= session()->get('nama_user') ?></h4>
+                                                    <p class="text-muted"><?= session()->get('email') ?></p>
                                                 </div>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="dropdown-divider"></div>
                                             <a class="dropdown-item" href="#">My Profile</a>
-                                            <a class="dropdown-item" href="#">My Balance</a>
-                                            <a class="dropdown-item" href="#">Inbox</a>
                                             <div class="dropdown-divider"></div>
                                             <a class="dropdown-item" href="#">Account Setting</a>
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Logout</a>
+                                            <a class="dropdown-item" href="<?= base_url('Home/Logout') ?>">Logout</a>
                                         </li>
                                     </div>
                                 </ul>

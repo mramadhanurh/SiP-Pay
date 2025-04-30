@@ -42,27 +42,58 @@
                                     </div>
                                 </div>
                             </div>
-                            <form action="#!">
+                            <?php
+                            $errors = session()->getFlashdata('errors');
+                            if (!empty($errors)) { ?> 
+                                <div class="alert alert-danger alert-dismissible">
+                                    <ul>
+                                        <?php foreach ($errors as $key => $error) { ?>
+                                            <li><?= esc($error) ?></li>
+                                        <?php } ?>
+                                    </ul>
+                                </div>
+                            <?php } ?>
+
+                            <?php
+                            if (session()->getFlashdata('pesan')) {
+                                echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                <i class="icon fas fa-check"></i>';
+                                echo session()->getFlashdata('pesan');
+                                echo '</div>';
+                            }
+
+                            if (session()->getFlashdata('gagal')) {
+                                echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                <i class="icon fas fa-check"></i>';
+                                echo session()->getFlashdata('gagal');
+                                echo '</div>';
+                            }
+
+                            ?>
+
+                            <?php echo form_open('Home/CekLogin') ?>
                                 <div class="row gy-3 overflow-hidden">
                                     <div class="col-12">
                                         <div class="form-floating mb-3">
-                                            <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com" required>
+                                            <input type="email" class="form-control" name="email" id="email" placeholder="Email">
                                             <label for="email" class="form-label">Email</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating mb-3">
-                                            <input type="password" class="form-control" name="password" id="password" value="" placeholder="Password" required>
+                                            <input type="password" class="form-control" name="password" id="password" placeholder="Password">
                                             <label for="password" class="form-label">Password</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="d-grid">
-                                            <button class="btn btn-primary btn-lg" type="submit">Log in now</button>
+                                            <button class="btn btn-primary btn-lg" type="submit">Log in</button>
                                         </div>
                                     </div>
                                 </div>
-                            </form>
+                            <?php form_close() ?>
                         </div>
                     </div>
                 </div>
@@ -71,6 +102,7 @@
         </div>
     </section>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
