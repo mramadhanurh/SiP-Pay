@@ -62,8 +62,8 @@
             <div class="sidebar-wrapper scrollbar scrollbar-inner">
                 <div class="sidebar-content">
                     <ul class="nav nav-secondary">
-                        <li class="nav-item active">
-                            <a href="/">
+                        <li class="nav-item <?= isset($menu) && $menu == 'admin' ? 'active' : '' ?>">
+                            <a href="<?= base_url('Admin/index') ?>">
                                 <i class="fas fa-home"></i>
                                 <p>Dashboard</p>
                             </a>
@@ -87,13 +87,13 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="widgets.html">
+                            <a href="#">
                                 <i class="fas fa-desktop"></i>
                                 <p>Siswa</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="widgets.html">
+                        <li class="nav-item <?= isset($menu) && $menu == 'user' ? 'active' : '' ?>">
+                            <a href="<?= base_url('User') ?>">
                                 <i class="fas fa-desktop"></i>
                                 <p>Pengguna</p>
                             </a>
@@ -282,6 +282,12 @@
             lineWidth: '2',
             lineColor: '#ffa534',
             fillColor: 'rgba(255, 165, 52, .14)'
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $("#basic-datatables").DataTable();
         });
     </script>
 </body>
