@@ -74,8 +74,8 @@
                             </span>
                             <h4 class="text-section">Master Data</h4>
                         </li>
-                        <li class="nav-item">
-                            <a href="widgets.html">
+                        <li class="nav-item <?= isset($menu) && $menu == 'tahun_ajaran' ? 'active' : '' ?>">
+                            <a href="<?= base_url('Tahunajaran') ?>">
                                 <i class="fas fa-desktop"></i>
                                 <p>Tahun Ajaran</p>
                             </a>
