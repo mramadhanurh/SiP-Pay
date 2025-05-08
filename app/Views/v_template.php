@@ -80,8 +80,8 @@
                                 <p>Tahun Ajaran</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="widgets.html">
+                        <li class="nav-item <?= isset($menu) && $menu == 'kelas' ? 'active' : '' ?>">
+                            <a href="<?= base_url('Kelas') ?>">
                                 <i class="fas fa-desktop"></i>
                                 <p>Kelas</p>
                             </a>
