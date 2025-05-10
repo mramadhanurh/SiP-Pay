@@ -86,8 +86,8 @@
                                 <p>Kelas</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#">
+                        <li class="nav-item <?= isset($menu) && $menu == 'siswa' ? 'active' : '' ?>">
+                            <a href="<?= base_url('Siswa') ?>">
                                 <i class="fas fa-desktop"></i>
                                 <p>Siswa</p>
                             </a>
