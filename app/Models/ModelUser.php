@@ -9,10 +9,11 @@ class ModelUser extends Model
     protected $table = 'tbl_user';
     protected $primaryKey = 'id_user';
     protected $allowedFields = ['nama_user', 'id_siswa', 'nisn', 'email', 'password', 'level'];
-    
+
     public function AllData()
     {
         return $this->db->table('tbl_user')
+            ->whereIn('level', [1, 2])
             ->get()
             ->getResultArray();
     }

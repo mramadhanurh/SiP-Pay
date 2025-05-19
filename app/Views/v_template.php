@@ -62,6 +62,11 @@
             <div class="sidebar-wrapper scrollbar scrollbar-inner">
                 <div class="sidebar-content">
                     <ul class="nav nav-secondary">
+
+                    <?php $level = session()->get('level'); ?>
+
+                    <!-- Untuk Tata Usaha (Level 1) -->
+                    <?php if ($level == 1): ?>
                         <li class="nav-item <?= isset($menu) && $menu == 'admin' ? 'active' : '' ?>">
                             <a href="<?= base_url('Admin/index') ?>">
                                 <i class="fas fa-home"></i>
@@ -110,6 +115,17 @@
                                 <p>Pembayaran</p>
                             </a>
                         </li>
+                    <?php endif; ?>
+
+                    <!-- Untuk Keuangan (Level 2) -->
+                    <?php if ($level == 2): ?>
+                        <li class="nav-item <?= isset($menu) && $menu == 'keuangan' ? 'active' : '' ?>">
+                            <a href="<?= base_url('Keuangan') ?>">
+                                <i class="fas fa-home"></i>
+                                <p>Dashboard</p>
+                            </a>
+                        </li>
+                    <?php endif; ?>
                     </ul>
                 </div>
             </div>
