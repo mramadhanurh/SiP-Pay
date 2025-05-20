@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\ModelTransaksipembayaran;
 use App\Models\ModelUser;
 use App\Models\ModelPembayaran;
+use Dompdf\Dompdf;
 
 class Transaksipembayaran extends BaseController
 {
@@ -177,5 +178,26 @@ class Transaksipembayaran extends BaseController
             'pembayaran' => $this->ModelPembayaran->AllData(),
         ];
         return view('v_template', $data);
+    }
+
+    public function CetakTransaksi($id_transaksi)
+    {
+        // Ambil data transaksi berdasarkan ID
+        $data = [
+            'judul' => 'Struk Pembayaran',
+            'transaksi' => $this->ModelTransaksipembayaran->DetailTransaksi($id_transaksi),
+        ];
+
+        // Load view untuk pdf
+        $html = view('v_strukpembayaran', $data);
+
+        // Inisialisasi Dompdf
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+
+        // Output ke browser
+        $dompdf->stream('struk_pembayaran.pdf', ['Attachment' => false]);
     }
 }

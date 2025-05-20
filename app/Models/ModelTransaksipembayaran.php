@@ -27,6 +27,15 @@ class ModelTransaksipembayaran extends Model
             ->get()->getResultArray();
     }
 
+    public function DetailTransaksi($id_transaksi)
+    {
+        return $this->db->table('tbl_transaksi_pembayaran')
+            ->join('tbl_pembayaran', 'tbl_pembayaran.id_pembayaran = tbl_transaksi_pembayaran.id_pembayaran')
+            ->join('tbl_siswa', 'tbl_siswa.id_siswa = tbl_pembayaran.id_siswa')
+            ->where('id_transaksi_pembayaran', $id_transaksi)
+            ->get()->getRowArray();
+    }
+
     public function InsertData($data)
     {
         $this->db->table('tbl_transaksi_pembayaran')->insert($data);

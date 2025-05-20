@@ -3,9 +3,9 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Kaiadmin - Bootstrap 5 Admin Dashboard</title>
+    <title>Dashboard - SI Pembayaran SPP</title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-    <link rel="icon" href="<?= base_url('admin') ?>/assets/img/kaiadmin/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="<?= base_url('admin') ?>/assets/img/school.png" type="image/x-icon" />
 
     <!-- Fonts and icons -->
     <script src="<?= base_url('admin') ?>/assets/js/plugin/webfont/webfont.min.js"></script>
@@ -177,6 +177,12 @@
                                 <p>Pembayaran</p>
                             </a>
                         </li>
+                        <li class="nav-item <?= isset($menu) && $menu == 'cetakpembayaran' ? 'active' : '' ?>">
+                            <a href="<?= base_url('Transaksipembayaran/CetakPembayaranOrangtua') ?>">
+                                <i class="fas fa-desktop"></i>
+                                <p>Cetak Pembayaran</p>
+                            </a>
+                        </li>
                     <?php endif; ?>
                     </ul>
                 </div>
@@ -235,10 +241,6 @@
                                             </div>
                                         </li>
                                         <li>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">My Profile</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Account Setting</a>
                                             <div class="dropdown-divider"></div>
                                             <a class="dropdown-item" href="<?= base_url('Home/Logout') ?>">Logout</a>
                                         </li>
