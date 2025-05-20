@@ -80,6 +80,7 @@ class Home extends BaseController
         if ($cek_login) {
             session()->set('id_user', $cek_login['id_user']);
             session()->set('nama_user', $cek_login['nama_user'] ?? $cek_login['nisn']);
+            session()->set('nisn', $cek_login['nisn']);
             session()->set('email', $cek_login['email']);
             session()->set('level', $cek_login['level']);
     

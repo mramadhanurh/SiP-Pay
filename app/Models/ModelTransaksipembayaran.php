@@ -16,6 +16,17 @@ class ModelTransaksipembayaran extends Model
             ->getResultArray();
     }
 
+    public function DataByNISN($nisn)
+    {
+        return $this->db->table('tbl_transaksi_pembayaran')
+            ->join('tbl_pembayaran', 'tbl_pembayaran.id_pembayaran = tbl_transaksi_pembayaran.id_pembayaran')
+            ->join('tbl_siswa', 'tbl_siswa.id_siswa = tbl_pembayaran.id_siswa')
+            ->join('tbl_user', 'tbl_user.nisn = tbl_siswa.nisn')
+            ->where('tbl_user.nisn', $nisn)
+            ->select('tbl_transaksi_pembayaran.*, tbl_user.nama_user, tbl_siswa.nama_siswa')
+            ->get()->getResultArray();
+    }
+
     public function InsertData($data)
     {
         $this->db->table('tbl_transaksi_pembayaran')->insert($data);

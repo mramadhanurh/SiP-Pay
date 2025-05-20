@@ -109,4 +109,73 @@ class Transaksipembayaran extends BaseController
         session()->setFlashdata('pesan', 'Data Berhasil Dihapus!');
         return redirect()->to('Transaksipembayaran');
     }
+
+    public function PembayaranOrangtua()
+    {
+        // Ambil nisn dari session
+        $nisn = session()->get('nisn');
+
+        $data = [
+            'judul' => 'Pembayaran Orang Tua',
+            'subjudul' => 'Pembayaran Orang Tua',
+            'menu' => 'pembayaranorangtua',
+            'submenu' => '',
+            'page' => 'v_pembayaranorangtua',
+            'transaksi' => $this->ModelTransaksipembayaran->DataByNISN($nisn),
+            'user' => $this->ModelUser->AllData(),
+            'pembayaran' => $this->ModelPembayaran->AllData(),
+        ];
+        return view('v_template', $data);
+    }
+
+    public function UpdateDataPembayaranOrangtua($id_transaksi_pembayaran)
+    {
+        // Ambil file yang diupload
+        $file = $this->request->getFile('bukti_bayar');
+
+        // Ambil data lama untuk hapus gambar lama jika perlu
+        $oldData = $this->ModelTransaksipembayaran->DetailData($id_transaksi_pembayaran);
+
+        if ($file && $file->isValid() && !$file->hasMoved()) {
+            // Generate nama file baru
+            $namaFile = $file->getRandomName();
+
+            // Upload file
+            $file->move('bukti_bayar', $namaFile);
+
+            // Hapus file lama (opsional)
+            if ($oldData['bukti_bayar'] && file_exists('bukti_bayar/' . $oldData['bukti_bayar'])) {
+                unlink('bukti_bayar/' . $oldData['bukti_bayar']);
+            }
+        } else {
+            // Jika tidak upload file baru, gunakan file lama
+            $namaFile = $oldData['bukti_bayar'];
+        }
+
+        $data = [
+            'id_transaksi_pembayaran' => $id_transaksi_pembayaran,
+            'bukti_bayar' => $namaFile,
+        ];
+        $this->ModelTransaksipembayaran->UpdateData($data);
+        session()->setFlashdata('pesan', 'Data Berhasil Diupdate!');
+        return redirect()->to('Transaksipembayaran/PembayaranOrangtua');
+    }
+
+    public function CetakPembayaranOrangtua()
+    {
+        // Ambil nisn dari session
+        $nisn = session()->get('nisn');
+
+        $data = [
+            'judul' => 'Cetak Pembayaran',
+            'subjudul' => 'Cetak Pembayaran',
+            'menu' => 'cetakpembayaran',
+            'submenu' => '',
+            'page' => 'v_cetakpembayaranorangtua',
+            'transaksi' => $this->ModelTransaksipembayaran->DataByNISN($nisn),
+            'user' => $this->ModelUser->AllData(),
+            'pembayaran' => $this->ModelPembayaran->AllData(),
+        ];
+        return view('v_template', $data);
+    }
 }
