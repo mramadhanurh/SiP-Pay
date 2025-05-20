@@ -45,4 +45,14 @@ class ModelUser extends Model
                 'password' => $password,
             ])->get()->getRowArray();
     }
+
+    public function LoginOrangTua($nisn, $password)
+    {
+        return $this->db->table('tbl_user')
+            ->where([
+                'nisn' => $nisn,
+                'password' => $password,
+                'level' => 3
+            ])->get()->getRowArray();
+    }
 }

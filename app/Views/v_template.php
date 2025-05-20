@@ -156,6 +156,16 @@
                             </a>
                         </li>
                     <?php endif; ?>
+
+                    <!-- Untuk Orang Tua (Level 3) -->
+                    <?php if ($level == 3): ?>
+                        <li class="nav-item <?= isset($menu) && $menu == 'orangtua' ? 'active' : '' ?>">
+                            <a href="<?= base_url('Orangtua') ?>">
+                                <i class="fas fa-home"></i>
+                                <p>Dashboard</p>
+                            </a>
+                        </li>
+                    <?php endif; ?>
                     </ul>
                 </div>
             </div>

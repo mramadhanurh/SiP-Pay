@@ -38,7 +38,7 @@
                                 <div class="col-12">
                                     <div class="mb-4">
                                         <h3>Sign in</h3>
-                                        <p>Don't have an account? <a href="#!">Sign up</a></p>
+                                        <p>Silahkan sign in terlebih dahulu</p>
                                     </div>
                                 </div>
                             </div>
@@ -75,16 +75,33 @@
 
                             <?php echo form_open('Home/CekLogin') ?>
                                 <div class="row gy-3 overflow-hidden">
-                                    <div class="col-12">
+                                    <div class="col-12" id="emailGroup">
                                         <div class="form-floating mb-3">
                                             <input type="email" class="form-control" name="email" id="email" placeholder="Email">
                                             <label for="email" class="form-label">Email</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 d-none" id="nisnGroup">
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" name="nisn" id="nisn" placeholder="NISN">
+                                            <label for="nisn" class="form-label">NISN</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating mb-3">
                                             <input type="password" class="form-control" name="password" id="password" placeholder="Password">
                                             <label for="password" class="form-label">Password</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating mb-3">
+                                            <select class="form-control form-select" name="level" id="level" required onchange="toggleLoginFields()">
+                                                <option value="">-- Pilih Level --</option>
+                                                <option value="1">Tata Usaha</option>
+                                                <option value="2">Keuangan</option>
+                                                <option value="3">Orang Tua</option>
+                                            </select>
+                                            <label for="level" class="form-label">Login Sebagai</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -103,6 +120,21 @@
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function toggleLoginFields() {
+            const level = document.getElementById('level').value;
+            const emailGroup = document.getElementById('emailGroup');
+            const nisnGroup = document.getElementById('nisnGroup');
+
+            if (level === "3") {
+                emailGroup.classList.add('d-none');
+                nisnGroup.classList.remove('d-none');
+            } else {
+                emailGroup.classList.remove('d-none');
+                nisnGroup.classList.add('d-none');
+            }
+        }
+    </script>
 </body>
 
 </html>
