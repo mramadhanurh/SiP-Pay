@@ -143,6 +143,18 @@
                                 <p>Transaksi Pembayaran</p>
                             </a>
                         </li>
+                        <li class="nav-section">
+                            <span class="sidebar-mini-icon">
+                                <i class="fa fa-ellipsis-h"></i>
+                            </span>
+                            <h4 class="text-section">Laporan</h4>
+                        </li>
+                        <li class="nav-item <?= isset($menu) && $menu == 'laporanpembayaran' ? 'active' : '' ?>">
+                            <a href="<?= base_url('Laporan') ?>">
+                                <i class="fas fa-desktop"></i>
+                                <p>Laporan Pembayaran</p>
+                            </a>
+                        </li>
                     <?php endif; ?>
                     </ul>
                 </div>
