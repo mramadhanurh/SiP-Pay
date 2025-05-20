@@ -50,7 +50,9 @@
                                         <th>Nama Siswa</th>
                                         <th>Kelas</th>
                                         <th>Tahun Ajaran</th>
-                                        <th>Aksi</th>
+                                        <?php if (session('level') == 1) : ?>
+                                            <th>Aksi</th>
+                                        <?php endif; ?>
                                     </tr>
                                 </thead>
                                 <tfoot class="text-center">
@@ -59,7 +61,9 @@
                                     <th>Nama Siswa</th>
                                     <th>Kelas</th>
                                     <th>Tahun Ajaran</th>
-                                    <th>Aksi</th>
+                                    <?php if (session('level') == 1) : ?>
+                                        <th>Aksi</th>
+                                    <?php endif; ?>
                                 </tfoot>
                                 <tbody>
                                     <?php $no = 1;
@@ -70,14 +74,16 @@
                                             <td><?= $value['nama_siswa'] ?></td>
                                             <td><?= $value['nama_kelas'] ?></td>
                                             <td><?= $value['tahun'] ?></td>
-                                            <td class="text-center">
-                                                <button class="btn btn-icon btn-round btn-success" data-bs-toggle="modal" data-bs-target="#edit-data<?= $value['id_siswa'] ?>">
-                                                    <i class="fas fa-edit"></i>
-                                                </button>
-                                                <button class="btn btn-icon btn-round btn-danger" data-bs-toggle="modal" data-bs-target="#delete-data<?= $value['id_siswa'] ?>">
-                                                    <i class="fas fa-trash-alt"></i>
-                                                </button>
-                                            </td>
+                                            <?php if (session('level') == 1) : ?>
+                                                <td class="text-center">
+                                                    <button class="btn btn-icon btn-round btn-success" data-bs-toggle="modal" data-bs-target="#edit-data<?= $value['id_siswa'] ?>">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                    <button class="btn btn-icon btn-round btn-danger" data-bs-toggle="modal" data-bs-target="#delete-data<?= $value['id_siswa'] ?>">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                </td>
+                                            <?php endif; ?>
                                         </tr>
                                     <?php } ?>
                                 </tbody>
