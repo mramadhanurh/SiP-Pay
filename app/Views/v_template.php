@@ -109,8 +109,8 @@
                             </span>
                             <h4 class="text-section">Transaksi</h4>
                         </li>
-                        <li class="nav-item">
-                            <a href="widgets.html">
+                        <li class="nav-item <?= isset($menu) && $menu == 'pembayaran' ? 'active' : '' ?>">
+                            <a href="<?= base_url('Pembayaran') ?>">
                                 <i class="fas fa-desktop"></i>
                                 <p>Pembayaran</p>
                             </a>
