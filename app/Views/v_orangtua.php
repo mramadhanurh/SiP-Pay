@@ -87,5 +87,57 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-md-12">
+            <div class="card card-round">
+                <div class="card-header">
+                    <div class="card-head-row card-tools-still-right">
+                        <div class="card-title">Notifikasi Pembayaran</div>
+                        <div class="card-tools">
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <!-- Projects table -->
+                        <table class="table align-items-center mb-0">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">Pembayaran</th>
+                                    <th scope="col" class="text-center">Tanggal Bayar</th>
+                                    <th scope="col" class="text-center">Jumlah</th>
+                                    <th scope="col" class="text-center">Metode</th>
+                                    <th scope="col" class="text-center">Notifikasi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                foreach ($transaksi as $key => $value) { ?>
+                                    <tr>
+                                        <th scope="row"><?= $value['nama_siswa'] ?></th>
+                                        <td class="text-center"><?= date('d-m-Y', strtotime($value['tanggal_bayar'])) ?></td>
+                                        <td class="text-center"><?= 'Rp ' . number_format($value['jumlah_bayar'], 0, ',', '.') ?></td>
+                                        <td class="text-center">
+                                        <?php
+                                            if ($value['metode_bayar'] == 1) {
+                                                echo '<span class="badge bg-success">Transfer</span>';
+                                            } elseif ($value['metode_bayar'] == 2) {
+                                                echo '<span class="badge bg-danger">Tunai</span>';
+                                            } else {
+                                                echo '-';
+                                            }
+                                        ?>
+                                        </td>
+                                        <td class="text-center">
+                                            <i class="fas fa-bell"></i>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

@@ -24,9 +24,11 @@
                         <div class="card-head-row">
                             <div class="card-title">Siswa</div>
                             <div class="card-tools">
-                                <button type="button" class="btn btn-primary btn-round" data-bs-toggle="modal" data-bs-target="#add-data">
-                                    Tambah Siswa
-                                </button>
+                                <?php if (session('level') == 1) : ?>
+                                    <button type="button" class="btn btn-primary btn-round" data-bs-toggle="modal" data-bs-target="#add-data">
+                                        Tambah Siswa
+                                    </button>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
